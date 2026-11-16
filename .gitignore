@@ -3,4 +3,7 @@
 !*.c
 !.h
 !Makefile
+!.vscode
 !.vscode/*
+!.devcontainer
+!.devcontainer/*
