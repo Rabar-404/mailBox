@@ -1,0 +1,1 @@
+int smtp_connect(const char *hostName, const char *portNumber);
