@@ -1,5 +1,22 @@
 {
-    "name": "Dev Environment with OpenSSL",
-    "image": "://microsoft.com",
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libssl-dev pkg-config"
+    "name": "mailBox dev",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-themes",
+                "albert.TabOut",
+                "ms-vscode.makefile-tools",
+                "SirTori.indenticator",
+                "ms-azuretools.vscode-containers",
+                "openai.chatgpt",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cpp-devtools",
+                "ms-vscode.cpptools"
+            ]
+        }
+    }
 }
