@@ -6,6 +6,7 @@ RUN apt-get install -y libssl-dev \
     gcc \
     make \
     build-essential \
-    git
+    git \
+    fish
 
 WORKDIR /workspace
