@@ -7,6 +7,7 @@
 #include <netdb.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
+#include "tls.c"
 
 
 #define RECEIVE_MODE 0
@@ -57,13 +58,13 @@ int smtp_connect(const char *hostName, const char *portNumber) {
         return 1;
     }
     char buffer[1024];
-    int result = receivemsg(buffer, 1024, sock_fd, RECEIVE_MODE);
+    receivemsg(buffer, 1024, sock_fd, RECEIVE_MODE);
     
 
     // SMTP communication
     char *command = "EHLO localhost\t\n";
     send(sock_fd, command, strlen(command), SEND_MODE);
-    result = receivemsg(buffer, 1024, sock_fd, RECEIVE_MODE);
+    receivemsg(buffer, 1024, sock_fd, RECEIVE_MODE);
 
     command = "STARTTLS\t\n";
     send(sock_fd, command, strlen(command), SEND_MODE);
@@ -71,9 +72,14 @@ int smtp_connect(const char *hostName, const char *portNumber) {
 
 
     // TLS handshake
-    
+    int result = tls_handshake(sock_fd);
+    if (result) {
+        fprintf(stderr, "Error: errno %d\n", result);
+        return result;
+    }
 
     close(sock_fd);
+    return 0;
 }
 
 
