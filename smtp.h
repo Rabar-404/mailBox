@@ -1,1 +1,1 @@
-int smtp_connect(const char *hostName, const char *portNumber);
+int smtp_send(int sock_fd, char *message);

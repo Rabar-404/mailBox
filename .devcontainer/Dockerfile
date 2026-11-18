@@ -8,6 +8,7 @@ RUN apt-get install -y libssl-dev \
     build-essential \
     git \
     fish \
-    gdb
+    gdb \
+    libcurl4-openssl-dev
 
 WORKDIR /workspace
